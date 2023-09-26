@@ -64,6 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Image.network('https://cdn-gulli.jnsmedia.fr/var/jeunesse/storage/images/gulli/chaine-tv/series/championnes-a-tout-prix/14823894-22-fre-FR/Championnes-a-tout-prix.jpg', width: 300, height: 100, fit: BoxFit.scaleDown), //ajout d'une image')
             Image.asset('images/fond écran supergirl 1.jpg', width: 275, height: 200, fit: BoxFit.scaleDown), //ajout d'une image
             const Text(
               'Nombre :',
@@ -102,6 +103,29 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: _resetCounter,
                 child: Icon(Icons.exposure_zero),), //Bouton au centre qui remet à zéro
             ),
+          ),
+
+          BottomNavigationBar: NavigationBar(
+            onDestinationSelected: (int index) {
+              setState(() {
+                _currentPageIndex = index;
+              });
+            },
+            selectedIndex: currentPageIndex,
+              destinations: const <Widget>[
+                NavigationDestination(
+                  icon: Icon(Icons.home),
+                  label: 'Accueil',
+                ),
+                NavigationDestination(
+                  icon: Icon(Icons.),
+                  label: 'Page suivante',
+                ),
+                NavigationDestination(
+                  icon: Icon(Icons.),
+                  label: 'Parametres',
+                ),
+              ],
           ),
         ]
       ),
