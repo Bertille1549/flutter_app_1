@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset('images/fond écran supergirl 1.jpg'),
+            Image.asset('images/fond écran supergirl 1.jpg', width: 275, height: 200, fit: BoxFit.scaleDown), //ajout d'une image
             const Text(
               'Nombre :',
             ),
