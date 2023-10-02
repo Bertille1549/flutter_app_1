@@ -104,30 +104,30 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Icon(Icons.exposure_zero),), //Bouton au centre qui remet à zéro
             ),
           ),
-
-          BottomNavigationBar: NavigationBar(
-            onDestinationSelected: (int index) {
-              setState(() {
-                _currentPageIndex = index;
-              });
-            },
-            selectedIndex: currentPageIndex,
-              destinations: const <Widget>[
-                NavigationDestination(
-                  icon: Icon(Icons.home),
-                  label: 'Accueil',
-                ),
-                NavigationDestination(
-                  icon: Icon(Icons.),
-                  label: 'Page suivante',
-                ),
-                NavigationDestination(
-                  icon: Icon(Icons.),
-                  label: 'Parametres',
-                ),
-              ],
-          ),
-        ]
+        ],        
+      ),
+      
+      bottomNavigationBar: NavigationBar(
+        onDestinationSelected: (int index) {
+          setState(() {
+            currentPageIndex = index;
+          });
+        },
+        selectedIndex: currentPageIndex,
+          destinations: const <Widget>[
+            NavigationDestination(
+              icon: Icon(Icons.home),
+              label: 'Accueil',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.skip_next),
+              label: 'Page suivante',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.settings),
+              label: 'Parametres',
+            ),
+          ],
       ),
     );
   }
