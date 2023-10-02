@@ -109,6 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
       
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {
+          //int currentPageIndex = 0;
           setState(() {
             currentPageIndex = index;
           });
