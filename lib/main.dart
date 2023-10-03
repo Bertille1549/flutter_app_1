@@ -33,6 +33,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  int currentPageIndex = 0;
+  int ind = 0;
 
   void _incrementCounter() {
     setState(() {
@@ -60,22 +62,36 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image.network('https://cdn-gulli.jnsmedia.fr/var/jeunesse/storage/images/gulli/chaine-tv/series/championnes-a-tout-prix/14823894-22-fre-FR/Championnes-a-tout-prix.jpg', width: 300, height: 100, fit: BoxFit.scaleDown), //ajout d'une image')
-            Image.asset('images/fond écran supergirl 1.jpg', width: 275, height: 200, fit: BoxFit.scaleDown), //ajout d'une image
-            const Text(
-              'Nombre :',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+
+      body: <Widget>[
+        Container(
+          child: ListView(
+            children: <Widget>[
+              Align(alignment: Alignment.center, child: Text('Nombre :'),),
+              Image.network('https://cdn-gulli.jnsmedia.fr/var/jeunesse/storage/images/gulli/chaine-tv/series/championnes-a-tout-prix/14823894-22-fre-FR/Championnes-a-tout-prix.jpg', width: 300, height: 100, fit: BoxFit.scaleDown),
+              Image.asset('images/fond écran supergirl 1.jpg', width: 275, height: 200, fit: BoxFit.scaleDown),
+              const Text(
+                'Nombre :',
+              ),
+              Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+            ],
+          ),
         ),
-      ),      
+      Container(
+        color: Colors.green,
+        alignment: Alignment.center,
+        child: const Text('Page suivante'),
+      ),
+      Container(
+        color: Colors.blue,
+        alignment: Alignment.center,
+        child: const Text('Parametres'),
+      ),
+      ][currentPageIndex],
+
       floatingActionButton: Stack(
         children: <Widget>[
           Padding(padding: EdgeInsets.only(left:31),
@@ -109,7 +125,6 @@ class _MyHomePageState extends State<MyHomePage> {
       
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {
-          //int currentPageIndex = 0;
           setState(() {
             currentPageIndex = index;
           });
