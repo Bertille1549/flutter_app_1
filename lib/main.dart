@@ -1,6 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/accueil.dart';
+import 'package:flutter_application_1/screens/nextpage.dart';
+import 'package:flutter_application_1/screens/settings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,160 +37,65 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
   int currentPageIndex = 0;
-  int ind = 0;
-  int random = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  _getDrawerItemWidget(int pos) {
+    switch (pos) {
+      case 0:
+      return new Accueil();  //Nom de votre StatefulWidget dans votre fichier Accueil
+      case 1:
+      return new Nextpage(); // Case Page suivante
+      case 2:
+      return new ParamBody(); // Case page paramètres
+      default:
+      return new Text('Erreur de page');
+    }
   }
-
-  void _decrementCounter() {
-    setState(() {
-      _counter--;
-    });
-  }
-
-    void _resetCounter() {
-    setState(() {
-      _counter = 0;
-    });
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
+    return Column(
+      children: [
+        AppBar(
+          key: Key('appBarPrincipale'),
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: Text('Aléatoire et Dés'),
+        ),
 
-      body: <Widget>[
+        Expanded(
+          child: Scaffold(
+            body: _getDrawerItemWidget(currentPageIndex)
+          )
+        ),
         
-      // page accueil
-        Container(
-          child: ListView(
-            children: <Widget>[
-              Image.network('https://cdn-gulli.jnsmedia.fr/var/jeunesse/storage/images/gulli/chaine-tv/series/championnes-a-tout-prix/14823894-22-fre-FR/Championnes-a-tout-prix.jpg', width: 300, height: 100, fit: BoxFit.scaleDown),
-              Image.asset('images/fond écran supergirl 1.jpg', width: 275, height: 200, fit: BoxFit.scaleDown),
-              Align(alignment: Alignment.center, child: 
-              const Text(
-                'Nombre :',
+        NavigationBar(
+          onDestinationSelected: (int index) {
+            setState(() {
+              currentPageIndex = index;
+            });
+          },
+          selectedIndex: currentPageIndex,
+            destinations: const <Widget>[
+              NavigationDestination(
+                icon: Icon(Icons.home),
+                label: 'Accueil',
               ),
+              NavigationDestination(
+                icon: Icon(Icons.skip_next),
+                label: 'Page suivante',
               ),
-
-              Align(alignment: Alignment.center, child: 
-              Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.headlineMedium,
+              NavigationDestination(
+                icon: Icon(Icons.settings),
+                label: 'Parametres',
               ),
-              ),            
             ],
-          ),
         ),
-      // page suivante
-      Container(
-        color: Colors.green,
-        alignment: Alignment.center,       
-        child: ListView(
-          children: <Widget>[
-            /*
-            Align(alignment: Alignment.center, heightFactor: 15, child: 
-              const Text('Page suivante'),
-            ),
-            */
-            Padding(padding: EdgeInsets.only(top: 225.0), child: 
-                          Align(alignment: Alignment.center, /*heightFactor: 10,*/ child:
-              Text(
-                '$random',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-            ), 
-            ),
-            
-            TextButton(
-              child: const Text('Générer un nombre aléatoire'),
-              style: TextButton.styleFrom(
-                foregroundColor: Colors.black,
-                padding: const EdgeInsets.all(10.0),
-                textStyle: const TextStyle(fontSize: 16),
-                backgroundColor: Colors.blueGrey,
-              ),
-              onPressed: () {
-                setState(() {
-                  var intValue = Random().nextInt(_counter);
-                  random = intValue;
-                });
-              },
-            ),
-          ],
-        ),
-      ),
-      // page parametres
-      Container(
-        color: Colors.blue,
-        alignment: Alignment.center,
-        child: const Text('Parametres'),
-      ),
-      ][currentPageIndex],
-
-      floatingActionButton: Stack(
-        children: <Widget>[
-          Padding(padding: EdgeInsets.only(left:31),
-            child: Align(
-              alignment: Alignment.bottomLeft,
-              child: FloatingActionButton(
-                onPressed: _decrementCounter,
-                child: Icon(Icons.remove_outlined),), //Bouton au centre qui enlève 1
-            ),
-          ),
-
-          Padding(padding: EdgeInsets.only(left:31),
-            child: Align(
-              alignment: Alignment.bottomRight,
-              child: FloatingActionButton(
-                onPressed: _incrementCounter,
-                child: Icon(Icons.add_outlined),), //Bouton au centre qui ajoute 1
-            ),
-          ),
-
-          Padding(padding: EdgeInsets.only(left:31),
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: FloatingActionButton(
-                onPressed: _resetCounter,
-                child: Icon(Icons.exposure_zero),), //Bouton au centre qui remet à zéro
-            ),
-          ),
-        ],        
-      ),
-      
-      bottomNavigationBar: NavigationBar(
-        onDestinationSelected: (int index) {
-          setState(() {
-            currentPageIndex = index;
-          });
-        },
-        selectedIndex: currentPageIndex,
-          destinations: const <Widget>[
-            NavigationDestination(
-              icon: Icon(Icons.home),
-              label: 'Accueil',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.skip_next),
-              label: 'Page suivante',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.settings),
-              label: 'Parametres',
-            ),
-          ],
-      ),
+      ], // Children
     );
   }
 }
