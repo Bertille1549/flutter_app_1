@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 class Nextpage extends StatefulWidget {
   const Nextpage({Key? key}) : super(key: key);
@@ -41,11 +42,11 @@ color: Colors.green,
                 backgroundColor: Colors.blueGrey,
               ),
               
-              onPressed: () {/*
+              onPressed: () {
                 setState(() {
                   var intValue = Random().nextInt(_counter);
                   random = intValue;
-                });*/
+                });
               },
               
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class Accueil extends StatefulWidget {
   const Accueil({Key? key}) : super(key: key);
 
@@ -46,20 +47,76 @@ class AccueilBody extends State<Accueil> {
             '$_counter',
             style: Theme.of(context).textTheme.headlineMedium,
           ),
-          ),            
+          ), 
+          Row(
+            children: <Widget>[
+              Container(
+                alignment: Alignment.centerLeft,
+                child:
+                IconButton(
+                  iconSize: 35.0,
+                  //padding: EdgeInsets.only(left: 31.0),
+                  onPressed: _decrementCounter,
+                  icon: Icon(Icons.remove_outlined),
+                ),
+              ),
+
+              Container(
+                alignment: Alignment.center,
+                child:
+                IconButton(
+                  iconSize: 35.0,
+                  //padding: EdgeInsets.only(left: 100.0),
+                  icon: Icon(Icons.exposure_zero_outlined),
+                  onPressed: _resetCounter,
+                ),
+              ),
+
+              Container(
+                alignment: Alignment.centerRight,
+                child:
+                IconButton(
+                  iconSize: 35.0,
+                  //padding: EdgeInsets.only(left: 120.0),
+                  icon: Icon(Icons.add_outlined),
+                  onPressed: _incrementCounter,
+                ),
+              )
+
+              /*
+                IconButton(
+                  iconSize: 35.0,
+                  padding: EdgeInsets.only(left: 31.0),
+                  onPressed: _decrementCounter,
+                  icon: Icon(Icons.remove_outlined),
+                ),
+
+                IconButton(
+                  iconSize: 35.0,
+                  padding: EdgeInsets.only(left: 100.0),
+                  icon: Icon(Icons.exposure_zero_outlined),
+                  onPressed: _resetCounter,
+                ),
+
+                IconButton(
+                  iconSize: 35.0,
+                  padding: EdgeInsets.only(left: 120.0),
+                  icon: Icon(Icons.add_outlined),
+                  onPressed: _incrementCounter,
+                ),
+                */
+                
+            ],
+          ),           
         ],
       ),
     );   
 
-    ElevatedButton(
-      onPressed: _decrementCounter(),
-      child: Icon(Icons.remove_outlined),),
+          
 
-    ElevatedButton(
-      onPressed: _incrementCounter(),
-      child: Icon(Icons.add_outlined),),
+    
 
-
+  
 
   }
 }
