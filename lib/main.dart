@@ -1,6 +1,7 @@
 //import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/my_flutter_app_icons.dart';
 import 'package:flutter_application_1/screens/accueil.dart';
 import 'package:flutter_application_1/screens/nextpage.dart';
 import 'package:flutter_application_1/screens/settings.dart';
@@ -82,15 +83,15 @@ class _MyHomePageState extends State<MyHomePage> {
           selectedIndex: currentPageIndex,
             destinations: const <Widget>[
               NavigationDestination(
-                icon: Icon(Icons.home),
+                icon: Icon(MyFlutterApp.home),
                 label: 'Accueil',
               ),
               NavigationDestination(
-                icon: Icon(Icons.skip_next),
+                icon: Icon(MyFlutterApp.skip_next),
                 label: 'Page suivante',
               ),
               NavigationDestination(
-                icon: Icon(Icons.settings),
+                icon: Icon(MyFlutterApp.note_beamed),
                 label: 'Parametres',
               ),
             ],

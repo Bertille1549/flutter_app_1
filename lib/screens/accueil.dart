@@ -49,35 +49,33 @@ class AccueilBody extends State<Accueil> {
           ),
           ), 
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                alignment: Alignment.centerLeft,
                 child:
                 IconButton(
                   iconSize: 35.0,
-                  //padding: EdgeInsets.only(left: 31.0),
+                  padding: EdgeInsets.symmetric(horizontal: 20.0),
                   onPressed: _decrementCounter,
                   icon: Icon(Icons.remove_outlined),
                 ),
               ),
 
               Container(
-                alignment: Alignment.center,
                 child:
                 IconButton(
                   iconSize: 35.0,
-                  //padding: EdgeInsets.only(left: 100.0),
+                  padding: EdgeInsets.symmetric(horizontal: 20.0),
                   icon: Icon(Icons.exposure_zero_outlined),
                   onPressed: _resetCounter,
                 ),
               ),
 
               Container(
-                alignment: Alignment.centerRight,
                 child:
                 IconButton(
                   iconSize: 35.0,
-                  //padding: EdgeInsets.only(left: 120.0),
+                  padding: EdgeInsets.symmetric(horizontal: 20.0),
                   icon: Icon(Icons.add_outlined),
                   onPressed: _incrementCounter,
                 ),
