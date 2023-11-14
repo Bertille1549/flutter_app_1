@@ -1,28 +1,37 @@
-//import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/my_flutter_app_icons.dart';
 import 'package:flutter_application_1/screens/accueil.dart';
 import 'package:flutter_application_1/screens/nextpage.dart';
 import 'package:flutter_application_1/screens/settings.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'package:json_theme/json_theme.dart';
+import 'package:flutter/services.dart';
+import 'dart:convert';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final themeStr = await rootBundle.loadString('assets/ThemeAlbum.json');
+
+  final themeJson = jsonDecode(themeStr);
+
+  final theme = ThemeDecoder.decodeThemeData(themeJson)!;
+
+  runApp(MyApp(theme : theme));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final ThemeData theme;
 
+  const MyApp({Key? key, required this.theme}) : super(key: key);
+
+  // This widget is the root of your application
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
-        useMaterial3: true,
-        //primarySwatch: Colors.blue,
-      ),
+      theme: theme,
       home: const MyHomePage(title: 'Découverte de Flutter'),
     );
   }
