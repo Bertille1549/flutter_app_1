@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: theme,
-      home: const MyHomePage(title: 'Découverte de Flutter'),
+      home: const MyHomePage(title: 'Découverte de Flutter')
     );
   }
 }

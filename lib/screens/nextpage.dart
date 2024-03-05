@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'dart:math';
+import 'dart:math';
 
 class Nextpage extends StatefulWidget {
   const Nextpage({Key? key}) : super(key: key);
@@ -9,8 +9,28 @@ class Nextpage extends StatefulWidget {
 }
 
 class _NextPage extends State<Nextpage> {
-  //int _counter = 0;
   int random = 0;
+  String textValue = "";
+
+  void _showToast(BuildContext context, String _message) {
+    final scaffold = ScaffoldMessenger.of(context);
+    scaffold.showSnackBar(
+      SnackBar(
+        content: Text(_message),
+      ),
+    );
+  }
+
+  void _validateResult() {
+    // ajouter ici la logique pour vérifier le résultat saisi
+    // et afficher le toast en conséquence
+    if (textValue.isNotEmpty && int.tryParse(textValue) == random) {
+      _showToast(context, 'Bravo, le résultat est correct !');
+    }
+    else {
+      _showToast(context, 'Désolé, le résultat est incorrect.');
+    }
+  }
 
 @override
   Widget build(BuildContext context) {
@@ -25,7 +45,7 @@ color: Colors.green,
             ),
             */
             Padding(padding: EdgeInsets.only(top: 225.0), child: 
-                          Align(alignment: Alignment.center, /*heightFactor: 10,*/ child:
+              Align(alignment: Alignment.center, /*heightFactor: 10,*/ child:
               Text(
                 '$random',
                 style: Theme.of(context).textTheme.headlineMedium,
@@ -37,22 +57,54 @@ color: Colors.green,
               child: const Text('Générer un nombre aléatoire'),
               style: TextButton.styleFrom(
                 foregroundColor: Colors.black,
-                padding: const EdgeInsets.all(10.0),
+                //padding: const EdgeInsets.all(10.0),
+                //padding: const EdgeInsets.fromLTRB(250.0, 0, 250.0, 0),
                 textStyle: const TextStyle(fontSize: 16),
                 backgroundColor: Colors.blueGrey,
               ),
               
-              onPressed: () {/*
-                setState(() {/*
-                  var intValue = Random().nextInt(_counter);
-                  random = intValue;*/
-                });*/
+              onPressed: () {
+                // Ajoutez ici la logique pour générer un nombre aléatoire.
+                setState(() {
+                  int intValue = Random().nextInt(50);
+                  random = intValue;
+                });
+              },
+              
+            ),
+            TextField(
+              keyboardType: TextInputType.number,
+              maxLength: 25,
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+              decoration: const InputDecoration(
+                labelText: 'Entrer la solution',
+                hintText: 'Entrer un nombre',
+                border: OutlineInputBorder()
+              ),
+              onChanged: (value) => textValue = value,
+            ),
+            
+            TextButton(
+              child: const Text('Valider'),
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.black,
+                //padding: const EdgeInsets.all(10.0),
+                textStyle: const TextStyle(fontSize: 16),
+                backgroundColor: Colors.blueGrey,
+              ),
+              
+              onPressed: () {
+                //print(textValue);
+                _validateResult();
               },
               
             ),
           ],
         ),
       );
-        
   }
 }
