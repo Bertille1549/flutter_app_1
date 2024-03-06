@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/accueil.dart';
+import 'package:flutter_application_1/main.dart';
+//import 'package:flutter_application_1/screens/accueil.dart';
 import 'package:splashscreen/splashscreen.dart';
 
 class EcranDemarragePage extends StatelessWidget {
@@ -8,7 +9,8 @@ class EcranDemarragePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SplashScreen.timer(
       seconds: 5,
-      navigateAfterSeconds: Accueil(),
+      //navigateAfterSeconds: Accueil(),
+      navigateAfterSeconds: MyHomePage(title: 'Flutter Demo'),
       backgroundColor: Colors.green,
       title: Text('Gestion des albums', textScaleFactor: 2,),
       image: Image.network(

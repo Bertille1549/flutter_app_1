@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+//import 'package:flutter_application_1/screens/MyAppWrapper.dart';
+
 import 'package:flutter_application_1/my_flutter_app_icons.dart';
 import 'package:flutter_application_1/screens/accueil.dart';
 import 'package:flutter_application_1/screens/nextpage.dart';
 import 'package:flutter_application_1/screens/settings.dart';
 
+import 'package:flutter_application_1/screens/splashscreen.dart';
+
+//import 'package:splashscreen/splashscreen.dart';
 import 'package:json_theme/json_theme.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
@@ -24,7 +29,7 @@ class MyApp extends StatelessWidget {
   final ThemeData theme;
 
   const MyApp({Key? key, required this.theme}) : super(key: key);
-
+  
   // This widget is the root of your application
   @override
   Widget build(BuildContext context) {
@@ -32,10 +37,15 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: theme,
-      home: const MyHomePage(title: 'Découverte de Flutter')
+      //home: const MyHomePage(title: 'Découverte de Flutter')
+      home: EcranDemarragePage(),
+      //home: MyAppWrapper(),
+      //home: EcranDemarragePage() : MyHomePage(title: 'Flutter'),,
+
     );
   }
 }
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -109,3 +119,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
