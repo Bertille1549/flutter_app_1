@@ -5,8 +5,18 @@ class UnAlbum extends StatefulWidget {
   final String? description;
   final String? nomGroupe;
   final String? image;
+  final bool favoriAlbum;
+  final Function(bool newFavorite) updateFavorite;
 
-  const UnAlbum({Key? key, this.nomAlbum, this.description, this.nomGroupe, this.image}) : super(key: key);
+  const UnAlbum({
+    Key? key,
+    this.nomAlbum,
+    this.description,
+    this.nomGroupe,
+    this.image,
+    required this.favoriAlbum,
+    required this.updateFavorite,
+    }) : super(key: key);
 
   @override
   _UnAlbumState createState() => _UnAlbumState();
@@ -27,20 +37,41 @@ class _UnAlbumState extends State<UnAlbum> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.nomAlbum ?? 'Détails de l\'album'),
+        // ajout bouton dans barre d'application
+        leading: IconButton(
+          onPressed: () {
+            // utiliser Navigator.pop pour revenir à l'écran précédent
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back),
+        ),
       ),
       body: Center(
         child: Card(
           child: Column(
             children: <Widget>[
-            Text(widget.nomAlbum ?? 'Détails de l\'album :'),
-            Text(widget.description ?? 'Description : '),
-            Text(widget.nomGroupe ?? 'Nom du groupe : '),
-            Text(widget.image ?? 'Image :'),
-          ],
+              Text(widget.nomAlbum ?? 'Détails de l\'album :'),
+              Text(widget.description ?? 'Description : '),
+              Text(widget.nomGroupe ?? 'Nom du groupe : '),
+              Text(widget.image ?? 'Image :'),
+              IconButton(
+                icon: Icon(
+                  widget.favoriAlbum ? Icons.star : Icons.star_border,
+                  color: widget.favoriAlbum ? Colors.black : null,
+                ),
+                onPressed: () {
+                  _toggleFavorite();
+                },
+              ),
+            ],
           ),
         ),
         //child: Text('Détails de l\'album : ${widget.nomAlbum}'),
       ),
     );
+  }
+
+  void _toggleFavorite() {
+    widget.updateFavorite(!widget.favoriAlbum);
   }
 }
