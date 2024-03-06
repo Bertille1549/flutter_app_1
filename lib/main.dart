@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
         AppBar(
           key: Key('appBarPrincipale'),
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text('Aléatoire et Dés'),
+          title: Text('Musique'),
         ),
 
         Expanded(
