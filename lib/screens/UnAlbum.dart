@@ -5,8 +5,8 @@ class UnAlbum extends StatefulWidget {
   final String? description;
   final String? nomGroupe;
   final String? image;
-  final bool favoriAlbum;
-  final Function(bool newFavorite) updateFavorite;
+  //final bool favoriAlbum;
+  //final Function(bool newFavorite) updateFavorite;
 
   const UnAlbum({
     Key? key,
@@ -14,8 +14,8 @@ class UnAlbum extends StatefulWidget {
     this.description,
     this.nomGroupe,
     this.image,
-    required this.favoriAlbum,
-    required this.updateFavorite,
+    //required this.favoriAlbum,
+    //required this.updateFavorite,
     }) : super(key: key);
 
   @override
@@ -54,24 +54,23 @@ class _UnAlbumState extends State<UnAlbum> {
               Text(widget.description ?? 'Description : '),
               Text(widget.nomGroupe ?? 'Nom du groupe : '),
               Text(widget.image ?? 'Image :'),
+              /*
               IconButton(
                 icon: Icon(
                   widget.favoriAlbum ? Icons.star : Icons.star_border,
                   color: widget.favoriAlbum ? Colors.black : null,
                 ),
+                
                 onPressed: () {
-                  _toggleFavorite();
+                  //_toggleFavorite();
                 },
               ),
+              */
             ],
           ),
         ),
         //child: Text('Détails de l\'album : ${widget.nomAlbum}'),
       ),
     );
-  }
-
-  void _toggleFavorite() {
-    widget.updateFavorite(!widget.favoriAlbum);
   }
 }

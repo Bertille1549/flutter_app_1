@@ -75,7 +75,7 @@ class AccueilBody extends State<Accueil> {
   }
   */
 
-  void onAlbumClicked(String? nomAlbum, String? description, String? nomGroupe, String? image, bool favoriAlbum) {
+  void onAlbumClicked(String? nomAlbum, String? description, String? nomGroupe, String? image, /*bool favoriAlbum*/) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -84,8 +84,10 @@ class AccueilBody extends State<Accueil> {
           description: description,
           nomGroupe: nomGroupe,
           image : image,
-          favoriAlbum: favoriAlbum,
+
+          //favoriAlbum: favoriAlbum,
           // passage de la fonction de maj du favori à UnAlbum
+          /*
           updateFavorite: (bool newFavorite) {
             int index = listeAlbums.indexWhere((element) => element['nomAlbum'] == nomAlbum);
             if (index != -1) {
@@ -95,11 +97,23 @@ class AccueilBody extends State<Accueil> {
               });
             }
           }
+          */
         ),
       ),
     );
     //);
   }
+
+  void _toggleFavorite(String rechercheIndex) {
+    int index = listeAlbums.indexWhere((element) => element['nomAlbum'] == rechercheIndex);
+    setState(() {
+      //favoriAlbum = true;// nouvelle valeur du bouton;
+      if (index != -1) {
+        listeAlbums[index]['favori'] = true;// état du bouton ;
+      }
+    });
+  }
+
   /*
   int _counter = 0;
 
@@ -135,7 +149,7 @@ class AccueilBody extends State<Accueil> {
             description: albumInfo['description'],
             nomGroupe: albumInfo['nomGroupe'],
             image: albumInfo['image'],
-            onAlbumClicked: onAlbumClicked(albumInfo['nomAlbum'], albumInfo['description'], albumInfo['nomGroupe'], albumInfo['image'], albumInfo['favori']),
+            onAlbumClicked: onAlbumClicked,
             onTap: () {
               //navigateToAlbumDetails(albumInfo['nomAlbum']);
             },
