@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+//import 'package:flutter_application_1/screens/UnAlbum.dart';
 
 class Album extends StatelessWidget {
     Album({Key? key, this.nomAlbum, this.description, this.nomGroupe, this.image, this.onTap, this.onAlbumClicked,}) 
@@ -14,6 +16,7 @@ class Album extends StatelessWidget {
    Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        // aide de chatGPT car je ne comprenais pas
         if (onAlbumClicked != null) {
           onAlbumClicked! (nomAlbum, description, nomGroupe, image);
         }

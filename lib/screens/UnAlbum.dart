@@ -36,7 +36,8 @@ class _UnAlbumState extends State<UnAlbum> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.nomAlbum ?? 'Détails de l\'album'),
+        // titre de la page
+        title: Text('Information sur l\'album'),
         // ajout bouton dans barre d'application
         leading: IconButton(
           onPressed: () {
@@ -50,10 +51,23 @@ class _UnAlbumState extends State<UnAlbum> {
         child: Card(
           child: Column(
             children: <Widget>[
-              Text(widget.nomAlbum ?? 'Détails de l\'album :'),
-              Text(widget.description ?? 'Description : '),
-              Text(widget.nomGroupe ?? 'Nom du groupe : '),
-              Text(widget.image ?? 'Image :'),
+              // pour afficher l'image dans un cercle
+              ClipOval(
+                child: Image.asset("images/" + widget.image!,
+                fit: BoxFit.cover,
+                ),
+              ),
+              Text("\n"),
+              //Image.asset("images/" + widget.image!),
+              // affiche le titre de l'album
+              Text(widget.nomAlbum!, style: TextStyle(fontSize: 24),),
+              Text("\n"),
+              Text("Groupe : " + widget.nomGroupe!, style: TextStyle(fontSize: 18),),
+              Text("\n"),
+              Text("Informations supplémentaires :"),
+              Text("\n"),
+              Text(widget.description!),
+              
               /*
               IconButton(
                 icon: Icon(
