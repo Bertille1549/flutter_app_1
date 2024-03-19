@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-//import 'package:flutter_application_1/screens/UnAlbum.dart';
 
 class Album extends StatelessWidget {
     Album({Key? key, this.nomAlbum, this.description, this.nomGroupe, this.image, this.onTap, this.onAlbumClicked,}) 

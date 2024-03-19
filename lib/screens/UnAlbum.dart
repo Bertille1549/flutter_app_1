@@ -5,8 +5,6 @@ class UnAlbum extends StatefulWidget {
   final String? description;
   final String? nomGroupe;
   final String? image;
-  //final bool favoriAlbum;
-  //final Function(bool newFavorite) updateFavorite;
 
   const UnAlbum({
     Key? key,
@@ -14,8 +12,6 @@ class UnAlbum extends StatefulWidget {
     this.description,
     this.nomGroupe,
     this.image,
-    //required this.favoriAlbum,
-    //required this.updateFavorite,
     }) : super(key: key);
 
   @override
@@ -51,6 +47,18 @@ class _UnAlbumState extends State<UnAlbum> {
         child: Card(
           child: Column(
             children: <Widget>[
+              /*
+              IconButton(
+                icon: Icon(
+                  widget.favoriAlbum ? Icons.star : Icons.star_border,
+                  color: widget.favoriAlbum ? Colors.black : null,
+                ),
+                
+                onPressed: () {
+                  //_toggleFavorite();
+                },
+              ),
+              */
               // pour afficher l'image dans un cercle
               ClipOval(
                 child: Image.asset("images/" + widget.image!,
@@ -67,23 +75,9 @@ class _UnAlbumState extends State<UnAlbum> {
               Text("Informations supplémentaires :"),
               Text("\n"),
               Text(widget.description!),
-              
-              /*
-              IconButton(
-                icon: Icon(
-                  widget.favoriAlbum ? Icons.star : Icons.star_border,
-                  color: widget.favoriAlbum ? Colors.black : null,
-                ),
-                
-                onPressed: () {
-                  //_toggleFavorite();
-                },
-              ),
-              */
             ],
           ),
         ),
-        //child: Text('Détails de l\'album : ${widget.nomAlbum}'),
       ),
     );
   }
