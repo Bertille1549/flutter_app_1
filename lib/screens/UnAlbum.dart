@@ -32,6 +32,7 @@ class _UnAlbumState extends State<UnAlbum> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.green,
         // titre de la page
         title: Text('Information sur l\'album'),
         // ajout bouton dans barre d'application
