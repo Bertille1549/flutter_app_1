@@ -19,7 +19,7 @@ class AccueilBody extends State<Accueil> {
       'description': "L'album marque une évolution importante dans le style du groupe. Les tempos sont plus lents, les morceaux plus courts et leurs structures beaucoup plus simples, aspirant ainsi à du simple rock. C'est principalement un album de heavy metal, et il n'y a plus beaucoup de traces de trash metal. ",
       'nomGroupe' : 'Metallica',
       'image': "Metallica.jpg",
-      'favoriAlbum' : false,
+      'favori' : false,
     },
     // album Ride the Lightning
     {
@@ -27,7 +27,7 @@ class AccueilBody extends State<Accueil> {
       'description': "Ride the Lightning est considéré comme l'un des classiques du trash metal et comme une transition entre les débuts de Metallica, Kill'em All et Master of Puppets, plus mélodique et progressif. ",
       'nomGroupe' : 'Metallica',
       'image': "Ride the lightning.jpg",
-      'favori' : false,
+      'favori' : true,
     },
     // album Master of Puppets
     {
@@ -63,7 +63,7 @@ class AccueilBody extends State<Accueil> {
     },
   ];
 
-  void onAlbumClicked(String? nomAlbum, String? description, String? nomGroupe, String? image, /*bool favoriAlbum*/) {
+  void onAlbumClicked(String? nomAlbum, String? description, String? nomGroupe, String? image, /*bool favori*/) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -72,6 +72,8 @@ class AccueilBody extends State<Accueil> {
           description: description,
           nomGroupe: nomGroupe,
           image : image,
+          favoriAlbum: false,
+          listeAlbums: listeAlbums, // Passage de la liste d'albums
         ),
       ),
     );
